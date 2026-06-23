@@ -131,22 +131,34 @@ schema.table("users", table -> {
 ## Project Structure
 
 ```
-src/
-└── main/
-    ├── java/io/github/yourusername/flywaymigrations/
-    │   ├── autoconfigure/
-    │   │   ├── FlywayMigrationDslAutoConfiguration.java
-    │   │   └── FlywayMigrationDslProperties.java
-    │   └── library/
-    │       ├── DataType.java
-    │       ├── BaseMigration.java
-    │       ├── Blueprint.java
-    │       ├── ColumnDefination.java
-    │       ├── ForeignColumnDefination.java
-    │       ├── EnumDefinition.java
-    │       ├── MigrationInitializer.java
-    │       ├── MigrationRunner.java
-    │       ├── Schema.java
-    └── resources/META-INF/spring/
-        └── org.springframework.boot.autoconfigure.AutoConfiguration.imports
+DatabaseMigrationHelper/
+├── pom.xml
+├── README.md
+├── spring-boot-database-migration-starter/
+│   └── pom.xml
+└── spring-boot-database-migration-autoconfigure/
+    ├── pom.xml
+    └── src/
+        └── main/
+            ├── java/me/jobayeralmahmud/
+            │   ├── autoconfigure/
+            │   │   └── SpringBootDatabaseMigrationAutoConfigurer.java
+            │   ├── properties/
+            │   │   └── DatabaseConfigurationProperties.java
+            │   └── migration/
+            │       ├── BaseMigration.java
+            │       ├── Blueprint.java
+            │       ├── DataType.java
+            │       ├── MigrationInitializer.java
+            │       ├── MigrationQueries.java
+            │       ├── MigrationRunner.java
+            │       ├── Schema.java
+            │       └── definition/
+            │           ├── ColumnDefinition.java
+            │           ├── EnumDefinition.java
+            │           └── ForeignKeyDefinition.java
+            └── resources/
+                ├── META-INF/spring/
+                │   └── org.springframework.boot.autoconfigure.AutoConfiguration.imports
+                └── application.yml
 ```
