@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.jobayeralmahmud</groupId>
-    <artifactId>spring-database-migration-starter</artifactId>
+    <artifactId>spring-boot-database-migration-starter</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
     
@@ -19,8 +19,8 @@
     </developers>
 
     <modules>
-        <module>spring-boot-database-migration-autoconfigure</module>
-        <module>spring-boot-database-migration-starter</module>
+        <module>database-migration-autoconfigure</module>
+        <module>database-migration-spring-boot-starter</module>
     </modules>
 
     <properties>

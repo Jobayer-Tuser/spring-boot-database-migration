@@ -5,17 +5,22 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>me.jobayeralmahmud</groupId>
-        <artifactId>spring-database-migration-starter</artifactId>
+        <artifactId>spring-boot-database-migration-starter</artifactId>
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>spring-boot-database-migration-starter</artifactId>
+    <artifactId>database-migration-autoconfigure</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>me.jobayeralmahmud</groupId>
-            <artifactId>spring-boot-database-migration-autoconfigure</artifactId>
-            <version>1.0.0</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 

@@ -86,7 +86,7 @@ public class ColumnDefinition {
     public String afterColumn() {
         return afterColumn;
     }
-    
+
     public String getSqlDefinition() {
         var parts = new ArrayList<String>();
 
