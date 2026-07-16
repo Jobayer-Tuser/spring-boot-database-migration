@@ -1,4 +1,4 @@
-package me.jobayeralmahmud.migration.definition;
+package me.jobayeralmahmud.dbmigration.schema.model;
 
 import java.util.ArrayList;
 

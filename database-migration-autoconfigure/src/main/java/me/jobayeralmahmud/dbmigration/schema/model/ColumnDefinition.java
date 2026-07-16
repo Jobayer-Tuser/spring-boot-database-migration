@@ -1,6 +1,6 @@
-package me.jobayeralmahmud.migration.definition;
+package me.jobayeralmahmud.dbmigration.schema.model;
 
-import me.jobayeralmahmud.migration.DataType;
+import me.jobayeralmahmud.dbmigration.schema.DataType;
 
 import java.util.ArrayList;
 
@@ -98,13 +98,19 @@ public class ColumnDefinition {
             parts.add("AUTO_INCREMENT");
         if (primaryKey)
             parts.add("PRIMARY KEY");
-        parts.add(nullable ? "DEFAULT NULL" : "NOT NULL");
+
+        if (defaultCurrentTimestamp) {
+            parts.add(nullable ? "NULL" : "NOT NULL");
+            parts.add("DEFAULT CURRENT_TIMESTAMP");
+        } else if (defaultValue != null) {
+            parts.add(nullable ? "NULL" : "NOT NULL");
+            parts.add("DEFAULT " + defaultValue);
+        } else {
+            parts.add(nullable ? "DEFAULT NULL" : "NOT NULL");
+        }
+
         if (unique)
             parts.add("UNIQUE");
-        if (defaultCurrentTimestamp)
-            parts.add("DEFAULT CURRENT_TIMESTAMP");
-        else if (defaultValue != null)
-            parts.add("DEFAULT " + defaultValue);
         if (onUpdateCurrentTimestamp)
             parts.add("ON UPDATE CURRENT_TIMESTAMP");
 

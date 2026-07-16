@@ -1,5 +1,8 @@
-package me.jobayeralmahmud.migration;
+package me.jobayeralmahmud.dbmigration.executor;
 
+import me.jobayeralmahmud.dbmigration.api.BaseMigration;
+import me.jobayeralmahmud.dbmigration.dialect.MySqlQuery;
+import me.jobayeralmahmud.dbmigration.schema.Schema;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.support.TransactionTemplate;
 
@@ -12,12 +15,12 @@ import java.util.List;
  * A database migration runner utilizing Spring JDBC.
  * Automatically tracks executed migrations and rolls back failed ones.
  */
-public class MigrationRunner {
+public class MigrationExecutor {
 
     private final JdbcTemplate jdbcTemplate;
     private final TransactionTemplate transactionTemplate;
 
-    public MigrationRunner(JdbcTemplate jdbcTemplate, TransactionTemplate transactionTemplate) {
+    public MigrationExecutor(JdbcTemplate jdbcTemplate, TransactionTemplate transactionTemplate) {
         this.jdbcTemplate = jdbcTemplate;
         this.transactionTemplate = transactionTemplate;
     }
@@ -95,20 +98,20 @@ public class MigrationRunner {
     }
 
     private List<String> collectSuccessfulMigrationTables() {
-        return jdbcTemplate.query(MigrationQueries.SELECT_MIGRATIONS,
-                (rs, rowNum) -> rs.getString("migration_tables"));
+        return jdbcTemplate.query(MySqlQuery.findAllMigrations(),
+                (rs, rowNum) -> rs.getString(MySqlQuery.queryColumn()));
     }
 
     private void createTablesIfNotExists() {
-        jdbcTemplate.execute(MigrationQueries.CREATE_TABLE);
+        jdbcTemplate.execute(MySqlQuery.createMigrationTable());
     }
 
     private void storeMigratedTables(String name) {
-        jdbcTemplate.update(MigrationQueries.INSERT_MIGRATION, name);
+        jdbcTemplate.update(MySqlQuery.insertMigration(), name);
     }
 
     private void deleteMigratedTables(String name) {
-        jdbcTemplate.update(MigrationQueries.DELETE_MIGRATION, name);
+        jdbcTemplate.update(MySqlQuery.deleteMigration(), name);
     }
 
     private static void info(String message) {

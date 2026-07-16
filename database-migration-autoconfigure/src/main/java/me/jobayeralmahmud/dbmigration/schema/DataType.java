@@ -1,4 +1,4 @@
-package me.jobayeralmahmud.migration;
+package me.jobayeralmahmud.dbmigration.schema;
 
 public enum DataType {
     BIGINT, INT, TINYINT, VARCHAR, TEXT, BOOLEAN,

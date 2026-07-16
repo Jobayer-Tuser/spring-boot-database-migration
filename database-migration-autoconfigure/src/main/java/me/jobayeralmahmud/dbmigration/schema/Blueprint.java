@@ -1,8 +1,8 @@
-package me.jobayeralmahmud.migration;
+package me.jobayeralmahmud.dbmigration.schema;
 
-import me.jobayeralmahmud.migration.definition.ColumnDefinition;
-import me.jobayeralmahmud.migration.definition.EnumDefinition;
-import me.jobayeralmahmud.migration.definition.ForeignKeyDefinition;
+import me.jobayeralmahmud.dbmigration.schema.model.ColumnDefinition;
+import me.jobayeralmahmud.dbmigration.schema.model.EnumDefinition;
+import me.jobayeralmahmud.dbmigration.schema.model.ForeignKeyDefinition;
 
 import java.util.ArrayList;
 import java.util.List;

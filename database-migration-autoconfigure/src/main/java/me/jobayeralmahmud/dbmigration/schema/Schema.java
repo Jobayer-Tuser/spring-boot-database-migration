@@ -1,4 +1,4 @@
-package me.jobayeralmahmud.migration;
+package me.jobayeralmahmud.dbmigration.schema;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.function.Consumer;
@@ -31,7 +31,6 @@ public class Schema {
     }
 
     private void execute(String sql) {
-        System.out.println(sql);
         jdbcTemplate.execute(sql);
     }
 }
