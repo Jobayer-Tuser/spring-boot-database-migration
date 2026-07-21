@@ -8,8 +8,6 @@ import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -20,14 +18,19 @@ import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
-@AutoConfiguration(after = {DataSourceAutoConfiguration.class, JdbcTemplateAutoConfiguration.class})
-@ConditionalOnBean(JdbcTemplate.class)
+@AutoConfiguration(afterName = {
+        "org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration",
+        "org.springframework.boot.jdbc.autoconfigure.DataSourceAutoConfiguration",
+        "org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration",
+        "org.springframework.boot.jdbc.autoconfigure.JdbcTemplateAutoConfiguration"
+})
 @ConditionalOnClass(JdbcTemplate.class)
 @EnableConfigurationProperties(DatabaseMigrationProperties.class)
 public final class DatabaseMigrationAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
+    @ConditionalOnBean(JdbcTemplate.class)
     public MigrationRegistrar migrationInitializer(
             DataSource dataSource,
             PlatformTransactionManager transactionManager,

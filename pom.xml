@@ -5,9 +5,27 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.jobayeralmahmud</groupId>
-    <artifactId>spring-boot-database-migration-starter</artifactId>
+    <artifactId>spring-boot-database-migration</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
+
+    <name>spring-boot-database-migration</name>
+    <description>A Simple lightweight fluent api package for database migration helper in Spring Boot application.</description>
+    <url>https://github.com/Jobayer-Tuser/spring-boot-database-migration</url>
+
+    <developers>
+        <developer>
+            <id>jobayeralmahmud</id>
+            <name>Md. Jobayer Al Mahmud</name>
+            <email>jobayer.tuser@gmail.com</email>
+            <url>https://github.com/Jobayer-Tuser</url>
+        </developer>
+    </developers>
+
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/Jobayer-Tuser/spring-boot-database-migration/issues</url>
+    </issueManagement>
 
     <modules>
         <module>database-migration-autoconfigure</module>
@@ -28,24 +46,6 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
-    <name>spring-boot-database-migration</name>
-    <description>A Simple lightweight fluent api package for database migration helper in Spring Boot application.</description>
-    <url>https://github.com/Jobayer-Tuser/spring-boot-database-migration</url>
-
-    <developers>
-        <developer>
-            <id>jobayeralmahmud</id>
-            <name>Md. Jobayer Al Mahmud</name>
-            <email>jobayer.tuser@gmail.com</email>
-            <url>https://github.com/Jobayer-Tuser</url>
-        </developer>
-    </developers>
-
-    <issueManagement>
-        <system>GitHub Issues</system>
-        <url>https://github.com/Jobayer-Tuser/spring-boot-database-migration/issues</url>
-    </issueManagement>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -61,7 +61,6 @@
     <build>
         <pluginManagement>
             <plugins>
-
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -80,21 +79,6 @@
                         </annotationProcessorPaths>
                     </configuration>
                 </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-source-plugin</artifactId>
-                    <version>${maven-source-plugin.version}</version>
-                    <executions>
-                        <execution>
-                            <id>attach-sources</id>
-                            <goals>
-                                <goal>jar-no-fork</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-
             </plugins>
         </pluginManagement>
 

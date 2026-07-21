@@ -20,7 +20,10 @@ public class MigrationExecutor {
     private final JdbcTemplate jdbcTemplate;
     private final TransactionTemplate transactionTemplate;
 
-    public MigrationExecutor(JdbcTemplate jdbcTemplate, TransactionTemplate transactionTemplate) {
+    public MigrationExecutor(
+            JdbcTemplate jdbcTemplate,
+            TransactionTemplate transactionTemplate
+    ){
         this.jdbcTemplate = jdbcTemplate;
         this.transactionTemplate = transactionTemplate;
     }
@@ -28,7 +31,7 @@ public class MigrationExecutor {
     /**
      * Runs pending migrations in sequential order, skipping already-executed ones.
      */
-    public void run(List<BaseMigration> migrations) {
+    public void execute(List<BaseMigration> migrations) {
         createTablesIfNotExists();
         List<String> executed = collectSuccessfulMigrationTables();
 

@@ -30,7 +30,11 @@ public class MigrationRegistrar implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() {
-        MigrationExecutor runner = new MigrationExecutor(jdbcTemplate, transactionTemplate);
-        runner.run(migrations);
+        if (migrations == null || migrations.isEmpty()) {
+            System.out.println("No database migrations found to execute.");
+            return;
+        }
+        MigrationExecutor executor = new MigrationExecutor(jdbcTemplate, transactionTemplate);
+        executor.execute(migrations);
     }
 }
