@@ -134,26 +134,29 @@ schema.table("users", table -> {
 DatabaseMigrationHelper/
 ├── pom.xml
 ├── README.md
-├── spring-boot-database-migration-starter/
+├── database-migration-spring-boot-starter/
 │   └── pom.xml
-└── spring-boot-database-migration-autoconfigure/
+└── database-migration-autoconfigure/
     ├── pom.xml
     └── src/
         └── main/
-            ├── java/me/jobayeralmahmud/
+            ├── java/me/jobayeralmahmud/dbmigration/
+            │   ├── api/
+            │   │   └── BaseMigration.java
             │   ├── autoconfigure/
-            │   │   └── SpringBootDatabaseMigrationAutoConfigurer.java
-            │   ├── properties/
-            │   │   └── DatabaseConfigurationProperties.java
-            │   └── migration/
-            │       ├── BaseMigration.java
+            │   │   └── DatabaseMigrationAutoConfiguration.java
+            │   ├── config/
+            │   │   └── DatabaseMigrationProperties.java
+            │   ├── dialect/
+            │   │   └── MySqlQuery.java
+            │   ├── executor/
+            │   │   ├── MigrationExecutor.java
+            │   │   └── MigrationRegistrar.java
+            │   └── schema/
             │       ├── Blueprint.java
             │       ├── DataType.java
-            │       ├── MigrationInitializer.java
-            │       ├── MigrationQueries.java
-            │       ├── MigrationRunner.java
             │       ├── Schema.java
-            │       └── definition/
+            │       └── model/
             │           ├── ColumnDefinition.java
             │           ├── EnumDefinition.java
             │           └── ForeignKeyDefinition.java
